@@ -1,5 +1,5 @@
 {
     "watch": ["src", "test"],
     "ext": "ts",
-    "exec": "npx nyc --reporter=lcov npx ts-node 'test/run.ts'"
+    "exec": "npx nyc --reporter=lcov npx ts-node test/run.ts"
 }
