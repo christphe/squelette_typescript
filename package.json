@@ -43,7 +43,7 @@
         "prebuild": "rimraf dist && npm version prerelease --no-git-tag-version",
         "build": "tsc && rollup -c rollup.config.js && rimraf compiled",
         "watch": "tsc -w & rollup -c rollup.config.js -w",
-        "test": "ts-node -O '{\"module\": \"commonjs\"}' 'test/run.ts'",
+        "test": "ts-node 'test/run.ts'",
         "coverage": "nyc --reporter=lcov npm run test",
         "tdd": "nodemon --config test/support/nodemon.json",
         "test:prod": "npm run lint && nyc npm run test"
