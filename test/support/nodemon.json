@@ -1,0 +1,5 @@
+{
+    "watch": ["src", "test"],
+    "ext": "ts",
+    "exec": "nyc --reporter=lcov ts-node -O '{\"module\": \"commonjs\"}' 'test/run.ts'"
+}

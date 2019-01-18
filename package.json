@@ -1,0 +1,70 @@
+{
+    "name": "tdd",
+    "version": "0.0.0",
+    "description": "",
+    "keywords": [],
+    "main": "dist/tdd.umd.js",
+    "module": "dist/tdd.es5.js",
+    "typings": "dist/types/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "author": "sqli",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=6.0.0"
+    },
+    "nyc": {
+        "include": [
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "**/*.d.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "json",
+            "html",
+            "lcov"
+        ],
+        "all": true
+    },
+    "scripts": {
+        "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+        "prebuild": "rimraf dist && npm version prerelease --no-git-tag-version",
+        "build": "tsc && rollup -c rollup.config.js && rimraf compiled",
+        "watch": "tsc -w & rollup -c rollup.config.js -w",
+        "test": "ts-node -O '{\"module\": \"commonjs\"}' 'test/run.ts'",
+        "coverage": "nyc --reporter=lcov npm run test",
+        "tdd": "nodemon --config test/support/nodemon.json",
+        "test:prod": "npm run lint && nyc npm run test"
+    },
+    "devDependencies": {
+        "@types/jasmine": "^2.6.2",
+        "@types/node": "^8.0.53",
+        "jasmine": "^2.8.0",
+        "jasmine-reporters": "^2.2.1",
+        "jasmine-spec-reporter": "^4.2.1",
+        "nodemon": "^1.12.1",
+        "nyc": "^11.3.0",
+        "prettier": "^1.4.4",
+        "prompt": "^1.0.0",
+        "rimraf": "^2.6.1",
+        "rollup": "^0.52.0",
+        "rollup-plugin-commonjs": "^8.0.2",
+        "rollup-plugin-node-resolve": "^3.0.0",
+        "rollup-plugin-sourcemaps": "^0.4.2",
+        "ts-node": "^4.0.1",
+        "tslint": "^5.4.3",
+        "typescript": "^2.3.4"
+    }
+}
